@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ahhn.com.t03.orderMapper">
+    <!--根据id查询得到一个Order对象-->
+    <select id="getOrder" parameterType="int" resultType="_Order">
+        SELECT order_id id,order_no orderNo,order_price price FROM orders WHERE order_id=#{id}
+    </select>
+
+    <select id="getOrder2" parameterType="int" resultType="_Order" resultMap="getOrder2Map">
+        SELECT * FROM orders WHERE order_id=#{id}
+    </select>
+    
+    <resultMap id="getOrder2Map" type="_Order">
+        <id property="id" column="order_id"/>
+        <result property="orderNo" column="order_no"/>
+        <result property="price" column="order_price"/>
+    </resultMap>
+</mapper>
