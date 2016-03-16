@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ahhn.com.t05.studentMapper">
+
+    <select id="getClass" parameterType="int" resultMap="getClassMap">
+        SELECT * FROM class c,student s,teacher t WHERE t.t_id=c.teacher_id AND c.c_id=s.class_id AND c.c_id=#{id}
+    </select>
+
+    <resultMap id="getClassMap" type="_Classes">
+        <id property="id" column="c_id"/>
+        <result property="name" column="c_name"/>
+        <association property="teacher" javaType="_Teacher">
+            <id property="id" column="t_id"/>
+            <result property="name" column="t_name"/>
+        </association>
+        <collection property="students" ofType="_Student"><!--不能用JavaType-->
+            <id property="id" column="s_id"/>
+            <result property="name" column="s_name"/>
+        </collection>
+    </resultMap>
+
+    <select id="getClass2" parameterType="int" resultMap="getClass2Map">
+        SELECT * FROM class c WHERE c.c_id=#{id}
+    </select>
+
+    <select id="getTeacher" parameterType="int" resultType="_Teacher">
+        SELECT t.t_id id,t.t_name name FROM teacher t WHERE t.t_id=#{id}
+    </select>
+
+    <select id="getStudent" parameterType="int" resultType="_Student">
+        SELECT s.s_id id,s.s_name name FROM student s WHERE s.class_id=#{id}
+    </select>
+
+    <resultMap id="getClass2Map" type="_Classes">
+        <id property="id" column="c_id"/>
+        <result property="name" column="c_name"/>
+        <association property="teacher" column="teacher_id" javaType="_Teacher" select="getTeacher"/>
+        <collection property="students" column="c_id" ofType="_Student" select="getStudent"/>
+    </resultMap>
+</mapper>

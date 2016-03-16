@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ahhn.com.t04.classesMapper">
+    <!--
+        根据班级id查询班级信息，带老师信息
+    -->
+    <select id="getClasses" parameterType="int" resultMap="getClassMap">
+        SELECT * FROM class c,teacher t WHERE c.teacher_id=t.t_id AND c.c_id=#{id}
+    </select>
+
+    <resultMap id="getClassMap" type="_Classes">
+        <id property="id" column="c_id"/>
+        <result property="name" column="c_name"/>
+        <association property="teacher" javaType="_Teacher">
+            <id property="id" column="t_id"/>
+            <result property="name" column="t_name"/>
+        </association>
+    </resultMap>
+
+    <select id="getClasses2" parameterType="int" resultMap="getClass2Map">
+        SELECT * FROM class c WHERE c.c_id=#{id}
+    </select>
+
+    <select id="getTeacher" parameterType="int" resultType="_Teacher">
+        SELECT t.t_id id,t.t_name name FROM teacher t WHERE t.t_id=#{id}
+    </select>
+
+    <resultMap id="getClass2Map" type="_Classes">
+        <id property="id" column="c_id"/>
+        <result property="name" column="c_name"/>
+        <association property="teacher" javaType="_Teacher" column="teacher_id" select="getTeacher"/>
+    </resultMap>
+</mapper>

@@ -10,32 +10,84 @@
       <schema id="1" name="mybatis"/>
       <table id="2" parent="1" name="users"/>
       <table id="3" parent="1" name="orders"/>
-      <column id="4" parent="2" name="id">
+      <table id="4" parent="1" name="class"/>
+      <table id="5" parent="1" name="teacher"/>
+      <table id="6" parent="1" name="student"/>
+      <column id="7" parent="2" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="5" parent="2" name="NAME">
+      <column id="8" parent="2" name="NAME">
         <data-type>varchar(20)</data-type>
       </column>
-      <column id="6" parent="2" name="age">
+      <column id="9" parent="2" name="age">
         <data-type>int(11)</data-type>
       </column>
-      <key id="7" parent="2" name="PRIMARY">
+      <key id="10" parent="2" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="8" parent="3" name="order_id">
+      <column id="11" parent="3" name="order_id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="9" parent="3" name="order_no">
+      <column id="12" parent="3" name="order_no">
         <data-type>varchar(20)</data-type>
       </column>
-      <column id="10" parent="3" name="order_price">
+      <column id="13" parent="3" name="order_price">
         <data-type>float</data-type>
       </column>
-      <key id="11" parent="3" name="PRIMARY">
+      <key id="14" parent="3" name="PRIMARY">
         <columns>order_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="15" parent="4" name="c_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="16" parent="4" name="c_name">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="17" parent="4" name="teacher_id">
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="18" parent="4" name="fk_teacher_id">
+        <columns>teacher_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="19" parent="4" name="PRIMARY">
+        <columns>c_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="20" parent="4" name="fk_teacher_id">
+        <columns>teacher_id</columns>
+        <ref-key>~.teacher.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="21" parent="5" name="t_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="22" parent="5" name="t_name">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <key id="23" parent="5" name="PRIMARY">
+        <columns>t_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="24" parent="6" name="s_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="25" parent="6" name="s_name">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="26" parent="6" name="class_id">
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="27" parent="6" name="PRIMARY">
+        <columns>s_id</columns>
         <primary>1</primary>
       </key>
     </database-model>

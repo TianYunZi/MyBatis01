@@ -9,7 +9,11 @@
     <select id="getOrder2" parameterType="int" resultType="_Order" resultMap="getOrder2Map">
         SELECT * FROM orders WHERE order_id=#{id}
     </select>
-    
+
+    <!--封装一些映射关系
+        id:主键
+        result:一般字段
+    -->
     <resultMap id="getOrder2Map" type="_Order">
         <id property="id" column="order_id"/>
         <result property="orderNo" column="order_no"/>
