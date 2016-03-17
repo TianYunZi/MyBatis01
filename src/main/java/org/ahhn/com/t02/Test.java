@@ -1,6 +1,7 @@
 package org.ahhn.com.t02;
 
 
+import org.ahhn.com.t06.User;
 import org.ahhn.com.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

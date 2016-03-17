@@ -5,13 +5,16 @@
 
     <!--配置实体类别名-->
     <typeAliases>
-        <typeAlias type="org.ahhn.com.t02.User" alias="_User"/>
+        <typeAlias type="org.ahhn.com.t06.User" alias="_User"/>
         <!--<package name="org.ahhn.com.t02"/>-->
         
         <typeAlias type="org.ahhn.com.t03.Order" alias="_Order"/>
         <typeAlias type="org.ahhn.com.t04.Classes" alias="_Classes"/>
         <typeAlias type="org.ahhn.com.t04.Teacher" alias="_Teacher"/>
         <typeAlias type="org.ahhn.com.t05.Student" alias="_Student"/>
+        <typeAlias type="org.ahhn.com.t06.ConditionUser" alias="_ConditionUser"/>
+        <typeAlias type="org.ahhn.com.t06.User" alias="_User06"/>
+        <typeAlias type="org.ahhn.com.t07.User" alias="_User07"/>
     </typeAliases>
 
     <environments default="development">
@@ -31,7 +34,9 @@
         <!--<mapper resource="org/ahhn/com/t02/userMapper.xml"/>-->
         <!--<mapper class="org.ahhn.com.t02.UserMapper2"/>-->
         <!--<mapper resource="org/ahhn/com/t03/orderMapper.xml"/>-->
-        <mapper resource="org/ahhn/com/t04/classesMapper.xml"/>
-        <mapper resource="org/ahhn/com/t05/studentMapper.xml"/>
+        <!--<mapper resource="org/ahhn/com/t04/classesMapper.xml"/>-->
+        <!--<mapper resource="org/ahhn/com/t05/studentMapper.xml"/>-->
+        <!--<mapper resource="org/ahhn/com/t06/userMapper.xml"/>-->
+        <mapper resource="org/ahhn/com/t07/userMapper.xml"/>
     </mappers>
 </configuration>

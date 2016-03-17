@@ -1,5 +1,6 @@
 package org.ahhn.com.t02;
 
+import org.ahhn.com.t06.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
